@@ -1,0 +1,45 @@
+# Ren'Py compiled / runtime
+*.rpyc
+*.rpyb
+game/cache/
+game/saves/
+*.save
+*.rpa.bak
+
+# Generated web output (CI builds this; published on gh-pages only)
+web_dist/
+web_export/
+web_runtime/
+web_app/
+_site/
+/game.zip
+.renpy-sdk/
+
+# Logs and local build noise
+log.txt
+*.log
+traceback.txt
+errors.txt
+lint_out.txt
+compile_out.txt
+web_build_log.txt
+_untranslated_report.txt
+
+# Desktop-only video originals (Web uses .webm)
+*.avi
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+.Python
+.venv/
+venv/

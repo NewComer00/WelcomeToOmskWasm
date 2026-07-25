@@ -1,0 +1,7 @@
+# RenPyWeb progressive download rules - first match applies
+# '+' = progressive download, '-' = keep in game.zip (default)
+# +/- type path
+- image game/gui/**
++ image game/**
++ music game/**.mp3
++ music game/**.ogg

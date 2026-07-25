@@ -1,0 +1,53 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+
+      - name: Cache Ren'Py SDK
+        uses: actions/cache@v4
+        with:
+          path: .renpy-sdk
+          key: renpy-7.6.3-sdk-web-v2
+
+      - name: Web build with Ren'Py
+        env:
+          SDK_DIR: ${{ github.workspace }}/.renpy-sdk
+          SITE_DIR: ${{ github.workspace }}/_site
+          RENPY_VERSION: "7.6.3"
+        run: python3 scripts/ci_web_build.py
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
