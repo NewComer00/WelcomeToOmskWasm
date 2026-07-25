@@ -1,5 +1,5 @@
 # CLI web_build for Ren'Py 7.6.3 (stock launcher is GUI-only for web).
-# Copied into the SDK's launcher/game/ by CI before building.
+# Copied into the SDK's launcher/game/ by the build script before building.
 
 init python:
 

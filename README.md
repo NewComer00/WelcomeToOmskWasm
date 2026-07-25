@@ -1,12 +1,14 @@
 # WelcomeToOmskWasm
 
+中文 | [English](README.en.md)
+
 《Добро пожаловать в Омск / Welcome to Omsk》（2012）的非官方 Ren'Py Web 移植，附中文补丁。
 
 原作版权归 Связной и Семён 所有。本仓库为非商业粉丝项目，与原作者无关，使用前请阅读 [NOTICE.md](NOTICE.md)。
 
 ## 在线试玩
 
-https://newcomer00.github.io/WelcomeToOmskWasm/
+<https://newcomer00.github.io/WelcomeToOmskWasm/>
 
 建议使用桌面版 Chrome / Edge / Firefox。站点由 GitHub Actions 自动构建部署至 `gh-pages`。
 
@@ -14,8 +16,8 @@ https://newcomer00.github.io/WelcomeToOmskWasm/
 
 - `game/` — 工程源码与资源（含中文文本 `chinese.rpt`）
 - `progressive_download.txt` — Web 渐进下载规则
-- `ci/web_cli.rpy` — 为 Ren'Py 7.6.3 补充 `web_build` 命令行支持
 - `scripts/ci_web_build.py` — 拉取 SDK 并构建 Web 包，输出至 `_site/`
+- `scripts/web_cli.rpy` — 为 Ren'Py 7.6.3 补充 `web_build` 命令行支持
 - `.github/workflows/` — Pages 部署流程
 
 `game.zip` 及完整站点内容不纳入 `main` 分支，仅在 CI 构建产物与 `gh-pages` 中生成。
@@ -42,18 +44,20 @@ cd _site
 py -3 -m http.server 8000
 ```
 
-构建完成后请通过浏览器访问 http://127.0.0.1:8000/，不要直接打开 `index.html`。
+构建完成后请通过浏览器访问 <http://127.0.0.1:8000/>，不要直接打开 `index.html`。
 
 > Linux 环境如遇图片占位生成失败，请安装 `xvfb`，脚本会自动通过 `xvfb-run` 调用。
 
 支持的环境变量（可选）：
+
 - `SDK_DIR` — SDK 存放路径
 - `SITE_DIR` — 输出目录
 - `RENPY_VERSION` — 指定 Ren'Py 版本
 
 ### 方式二：本地已安装的 Ren'Py
 
-若本机已安装 Ren'Py 7.6.3 并解压 `renpy-*-web.zip`，可将 `ci/web_cli.rpy` 拷贝至 SDK 的 `launcher/game/` 目录（仅需一次），随后执行：
+若本机已安装 Ren'Py 7.6.3 并解压 `renpy-*-web.zip`，可将
+`scripts/web_cli.rpy` 拷贝至 SDK 的 `launcher/game/` 目录（仅需一次），随后执行：
 
 Linux / macOS：
 
